@@ -1,16 +1,16 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <DropdownMenu msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import DropdownMenu from './components/dropdownMenu.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    DropdownMenu
+}
 }
 </script>
 

@@ -107,6 +107,7 @@ export default{
     background-color: #fff;
     width:100%;
     padding: 10px;
+    backdrop-filter: trasparent;
 }
 .options{
     width: 100%;

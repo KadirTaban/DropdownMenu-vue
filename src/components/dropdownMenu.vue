@@ -17,11 +17,9 @@
                 <ul>
                     <li>
                         <label for="toggle_button" >
-                        <span v-if="isActive" class="toggle__label">On</span>
-                        <span v-if="! isActive" class = "toggle__label">Off</span>
+                        <ToggleButton/>
+                        
 
-                        <input type="checkbox" id="toggle_button" v-model="checkedValue">
-                        <span class = "toggle__switch"></span>
                         </label></li>
                     <li><button class="dropdown-edit">edit</button></li>
                     <li><button class = "dropdown-delete">delete</button></li>
@@ -32,49 +30,46 @@
 </template>
 
 <script>
+import ToggleButton from "./ToggleButton.vue";
 export default{
-  props: {
-      defaultState: {
-          type: Boolean,
-          default: false
-      }
-  },
-    data(){
-        return{
-            searchQuery:'',
+    props: {
+        defaultState: {
+            type: Boolean,
+            default: false
+        }
+    },
+    data() {
+        return {
+            searchQuery: "",
             selectedItems: null,
-            isVisible: false, 
+            isVisible: false,
             userArray: [],
             currentState: this.defaultState,
         };
-
     },
     computed: {
         isActive() {
             return this.currentState;
-        
         },
         checkedValue: {
             get() {
-                return this.defaultState
+                return this.defaultState;
             },
             set(newValue) {
                 this.currentState = newValue;
-                this.$emit('change',newValue);
+                this.$emit("change", newValue);
             }
         }
-
     },
     mounted() {
         fetch("https://jsonplaceholder.typicode.com/users")
-        .then(res => res.json())
-        .then(json => {
+            .then(res => res.json())
+            .then(json => {
             console.log(json);
             this.userArray = json;
-        })
+        });
     },
-
-
+    components: { ToggleButton }
 };
 </script>
 
